@@ -18,24 +18,21 @@ public class MessageFragment extends ListFragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-//        String[] listItems = {"Frag1","Frag2","Frag3" };
-//        ArrayAdapter<String> adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_expandable_list_item_1, listItems);
-//        setListAdapter(adapter);
         String[] contentString = {"<b>Title1</b><br>Content1",
-                      "<b>Title2</b><br>Content2",
-                      "<b>Titlte3</b><br>Content3"};
+                                  "<b>Title2</b><br>Content2",
+                                  "<b>Title3</b><br>Content3"};
 
         ArrayList list = new ArrayList<>();
         for (int i = 0; i < contentString.length; i++) {
             list.add(Html.fromHtml(contentString[i]));
         }
-        ArrayAdapter<Spanned> adapter = new ArrayAdapter<>(getActivity(), R.layout.message_item, R.id.text1, list);
+        adapter = new ArrayAdapter<>(getActivity(), R.layout.message_item, R.id.text1, list);
         setListAdapter(adapter);
-        getListView().setDivider(null);
+        getListView().setDividerHeight(5);
     }
 
     public void reload(){
-        String msg = "RELOADING";
+        String msg = "New content";
         adapter.add(Html.fromHtml(msg));
     }
 }
